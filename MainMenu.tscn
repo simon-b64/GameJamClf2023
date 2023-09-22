@@ -1,6 +1,6 @@
 [gd_scene load_steps=529 format=3 uid="uid://d4ci775f6erkf"]
 
-[ext_resource type="Script" path="res://main.cs" id="1_xbi5l"]
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_j8aen"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="2_o8t5k"]
 [ext_resource type="Texture2D" uid="uid://deq8khxov7meb" path="res://assets/background-sh.png" id="3_o0v4f"]
 
@@ -3679,7 +3679,7 @@ animations = [{
 }]
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource("1_xbi5l")
+script = ExtResource("1_j8aen")
 
 [node name="Play" type="Button" parent="."]
 offset_left = 128.0

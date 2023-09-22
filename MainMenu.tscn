@@ -1,4 +1,4 @@
-[gd_scene load_steps=529 format=3 uid="uid://d4ci775f6erkf"]
+[gd_scene load_steps=529 format=3 uid="uid://dpubh2myseqtj"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_j8aen"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="2_o8t5k"]
@@ -3682,32 +3682,32 @@ animations = [{
 script = ExtResource("1_j8aen")
 
 [node name="Play" type="Button" parent="."]
-offset_left = 128.0
-offset_top = 320.0
-offset_right = 512.0
-offset_bottom = 448.0
+offset_left = 192.0
+offset_top = 328.0
+offset_right = 576.0
+offset_bottom = 456.0
 text = "Play"
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 640.0
+offset_left = 704.0
 offset_top = 320.0
-offset_right = 1024.0
+offset_right = 1088.0
 offset_bottom = 448.0
 text = "Quit"
 
 [node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 512.0
+offset_left = 576.0
 offset_top = 512.0
-offset_right = 640.0
+offset_right = 704.0
 offset_bottom = 543.0
 disabled = true
 button_pressed = true
 text = "Music"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 320.0
+offset_left = 384.0
 offset_top = 128.0
-offset_right = 832.0
+offset_right = 896.0
 offset_bottom = 256.0
 text = "Turn off the fucking music"
 label_settings = SubResource("LabelSettings_6pbd1")
@@ -3716,9 +3716,10 @@ vertical_alignment = 1
 
 [node name="BackgroundAnimation" type="AnimatedSprite2D" parent="."]
 z_index = -1
-position = Vector2(576, 324)
-scale = Vector2(4.5, 2.53125)
+position = Vector2(640, 360)
+scale = Vector2(5, 2.8125)
 sprite_frames = SubResource("SpriteFrames_u6c3p")
+metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3

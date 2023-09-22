@@ -12,6 +12,7 @@ size = Vector2(20, 20)
 size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bdho"]
+size = Vector2(54.02, 20)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c8l0p"]
 size = Vector2(20, 20)
@@ -30,6 +31,11 @@ texture = SubResource("PlaceholderTexture2D_0iicc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_rg7i5")
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CanvasGroup"]
@@ -37,9 +43,12 @@ position = Vector2(500, 400)
 scale = Vector2(50, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup/StaticBody2D"]
+position = Vector2(17.02, 0)
+scale = Vector2(2.702, 1)
 texture = SubResource("PlaceholderTexture2D_dj6xl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/StaticBody2D"]
+position = Vector2(17.01, 0)
 shape = SubResource("RectangleShape2D_8bdho")
 
 [node name="Area2D" type="Area2D" parent="CanvasGroup"]

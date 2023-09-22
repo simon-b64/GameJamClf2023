@@ -1,4 +1,4 @@
-[gd_scene load_steps=529 format=3 uid="uid://dpubh2myseqtj"]
+[gd_scene load_steps=529 format=3 uid="uid://d4ci775f6erkf"]
 
 [ext_resource type="Script" path="res://main.cs" id="1_xbi5l"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="2_o8t5k"]

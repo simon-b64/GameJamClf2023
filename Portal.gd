@@ -15,5 +15,5 @@ func _on_door_body_exit(body):
 func _process(delta):
 	if player == null:
 		return
-	
+	print(self.get_transform().x - player.get_transform().x)
 	pass

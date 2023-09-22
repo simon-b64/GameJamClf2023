@@ -1,27 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://blaq5plrpq4yb"]
+[gd_scene load_steps=4 format=3 uid="uid://blaq5plrpq4yb"]
 
-[ext_resource type="Script" path="res://Door.gd" id="1_ykmi0"]
 [ext_resource type="PackedScene" uid="uid://csheys7q0mlyg" path="res://Platform.tscn" id="2_b1txt"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0v262"]
-size = Vector2(20, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fab0"]
+[ext_resource type="PackedScene" uid="uid://bi6cyleuokliv" path="res://Portal.tscn" id="2_uwemg"]
+[ext_resource type="Texture2D" uid="uid://cumqn2nwtc6q0" path="res://assets/tiles/background_wall.png" id="3_6dqlh"]
 
 [node name="Level B" type="Node2D"]
 
 [node name="CanvasGroup2" type="CanvasGroup" parent="."]
-
-[node name="Door" type="Area2D" parent="CanvasGroup2"]
-position = Vector2(600, 340)
-scale = Vector2(5, 5)
-script = ExtResource("1_ykmi0")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup2/Door"]
-texture = SubResource("PlaceholderTexture2D_0v262")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup2/Door"]
-shape = SubResource("RectangleShape2D_7fab0")
 
 [node name="Platform" parent="CanvasGroup2" instance=ExtResource("2_b1txt")]
 position = Vector2(897, 308)
@@ -31,4 +16,18 @@ scale = Vector2(20, 1)
 position = Vector2(400, 400)
 scale = Vector2(30, 1)
 
-[connection signal="body_entered" from="CanvasGroup2/Door" to="CanvasGroup2/Door" method="_on_door_body_entered"]
+[node name="Portal" parent="CanvasGroup2" instance=ExtResource("2_uwemg")]
+position = Vector2(600, 340)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+z_index = -1
+texture_repeat = 2
+offset_left = -10928.0
+offset_top = -1744.0
+offset_right = -8195.0
+offset_bottom = -1310.0
+scale = Vector2(8, 8)
+texture = ExtResource("3_6dqlh")
+expand_mode = 1
+stretch_mode = 1

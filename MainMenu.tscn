@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpubh2myseqtj"]
+
+[ext_resource type="Script" path="res://main.cs" id="1_xbi5l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pbd1"]
+line_spacing = 2.81
+font_size = 36
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_xbi5l")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 320.0
+offset_right = 512.0
+offset_bottom = 448.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 640.0
+offset_top = 320.0
+offset_right = 1024.0
+offset_bottom = 448.0
+text = "Quit"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 512.0
+offset_top = 512.0
+offset_right = 640.0
+offset_bottom = 543.0
+disabled = true
+button_pressed = true
+text = "Music"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 256.0
+text = "Turn off the fucking music"
+label_settings = SubResource("LabelSettings_6pbd1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

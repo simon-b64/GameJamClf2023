@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi6cyleuokliv"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ng1ql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh5cu"]
+
+[node name="Portal" type="Area2D"]
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ImageTexture_ng1ql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dh5cu")

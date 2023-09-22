@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://doc1yss2pjt58"]
+
+[ext_resource type="Script" path="res://Door.gd" id="1_lpjgw"]
+[ext_resource type="PackedScene" uid="uid://csheys7q0mlyg" path="res://Platform.tscn" id="2_druko"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yfbla"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p7bh"]
+
+[node name="Level A" type="Node2D"]
+
+[node name="CanvasGroup2" type="CanvasGroup" parent="."]
+
+[node name="Door" type="Area2D" parent="CanvasGroup2"]
+position = Vector2(200, 340)
+scale = Vector2(5, 5)
+script = ExtResource("1_lpjgw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup2/Door"]
+texture = SubResource("PlaceholderTexture2D_yfbla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup2/Door"]
+shape = SubResource("RectangleShape2D_6p7bh")
+
+[node name="Platform" parent="CanvasGroup2" instance=ExtResource("2_druko")]
+position = Vector2(897, 308)
+scale = Vector2(20, 1)
+
+[node name="Platform2" parent="CanvasGroup2" instance=ExtResource("2_druko")]
+position = Vector2(400, 400)
+scale = Vector2(30, 1)
+
+[connection signal="body_entered" from="CanvasGroup2/Door" to="CanvasGroup2/Door" method="_on_door_body_entered"]

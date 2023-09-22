@@ -1,7 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cx1ax31g3mbp5"]
 
+[ext_resource type="Script" path="res://GameScene.gd" id="1_56ctb"]
 [ext_resource type="Script" path="res://PlayerController.gd" id="1_twg3a"]
-[ext_resource type="Script" path="res://Door.gd" id="2_hp6up"]
+[ext_resource type="PackedScene" uid="uid://doc1yss2pjt58" path="res://Level A.tscn" id="2_fo8jt"]
+[ext_resource type="PackedScene" uid="uid://blaq5plrpq4yb" path="res://Level B.tscn" id="4_rbq7j"]
 [ext_resource type="Texture2D" uid="uid://cumqn2nwtc6q0" path="res://assets/tiles/background_wall.png" id="3_4p2x4"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0iicc"]
@@ -21,15 +23,16 @@ size = Vector2(20, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wora"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_56ctb")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 slide_on_ceiling = false
 script = ExtResource("1_twg3a")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = SubResource("PlaceholderTexture2D_0iicc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_rg7i5")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -37,16 +40,16 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="CanvasGroup"]
-position = Vector2(500, 400)
-scale = Vector2(50, 1)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup/StaticBody2D"]
 position = Vector2(17.02, 0)
 scale = Vector2(2.702, 1)
 texture = SubResource("PlaceholderTexture2D_dj6xl")
+[node name="Level A" parent="." instance=ExtResource("2_fo8jt")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/StaticBody2D"]
 position = Vector2(17.01, 0)
@@ -77,3 +80,5 @@ expand_mode = 1
 stretch_mode = 1
 
 [connection signal="body_entered" from="CanvasGroup/Area2D" to="CanvasGroup/Area2D" method="_on_body_entered"]
+[node name="Level B" parent="." instance=ExtResource("4_rbq7j")]
+position = Vector2(1500, 0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpubh2myseqtj"]
+[gd_scene load_steps=4 format=3 uid="uid://dpubh2myseqtj"]
 
 [ext_resource type="Script" path="res://main.cs" id="1_xbi5l"]
+[ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="2_o8t5k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6pbd1"]
 line_spacing = 2.81
@@ -41,6 +42,11 @@ text = "Turn off the fucking music"
 label_settings = SubResource("LabelSettings_6pbd1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_o8t5k")
+autoplay = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

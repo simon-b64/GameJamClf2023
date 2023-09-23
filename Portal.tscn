@@ -1,21 +1,80 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi6cyleuokliv"]
+[gd_scene load_steps=8 format=3 uid="uid://bi6cyleuokliv"]
 
 [ext_resource type="Texture2D" uid="uid://cq6niu3aaxasw" path="res://assets/portal.png" id="1_87f4q"]
 [ext_resource type="Script" path="res://Portal.gd" id="1_horcd"]
 
+[sub_resource type="Gradient" id="Gradient_gl8yw"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o1aq1"]
+gradient = SubResource("Gradient_gl8yw")
+width = 20
+height = 20
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh5cu"]
 
-[node name="Portal" type="Area2D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qcfnd"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxprh"]
+
+[node name="Node2D2" type="Node2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_horcd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Tunnel" type="Area2D" parent="."]
+position = Vector2(-40, 0)
+scale = Vector2(3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tunnel"]
+texture = SubResource("GradientTexture2D_o1aq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tunnel"]
+shape = SubResource("RectangleShape2D_dh5cu")
+
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(8, 0)
+scale = Vector2(0.25, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Portal"]
 position = Vector2(-0.1, -0.1)
 scale = Vector2(0.188785, 0.230233)
 texture = ExtResource("1_87f4q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
 shape = SubResource("RectangleShape2D_dh5cu")
 
-[connection signal="body_entered" from="." to="." method="_on_door_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_door_body_exit"]
+[node name="Bottom Wall" type="StaticBody2D" parent="."]
+position = Vector2(-30, 12)
+scale = Vector2(4, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottom Wall"]
+texture = SubResource("PlaceholderTexture2D_qcfnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Wall"]
+shape = SubResource("RectangleShape2D_yxprh")
+
+[node name="Top  Wall" type="StaticBody2D" parent="."]
+position = Vector2(-30, -12)
+scale = Vector2(4, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Top  Wall"]
+texture = SubResource("PlaceholderTexture2D_qcfnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top  Wall"]
+shape = SubResource("RectangleShape2D_yxprh")
+
+[node name="Back Wall" type="StaticBody2D" parent="."]
+position = Vector2(12, 0)
+scale = Vector2(0.2, 1.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Back Wall"]
+texture = SubResource("PlaceholderTexture2D_qcfnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back Wall"]
+shape = SubResource("RectangleShape2D_yxprh")
+
+[connection signal="body_entered" from="Tunnel" to="." method="_on_tunnel_entered"]
+[connection signal="body_exited" from="Tunnel" to="." method="_on_tunnel_exit"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_entered"]
+[connection signal="body_exited" from="Portal" to="." method="_on_portal_exit"]

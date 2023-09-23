@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://xtyauh3ffiak"]
+[gd_scene load_steps=4 format=3 uid="uid://doc1yss2pjt58"]
 
-[ext_resource type="PackedScene" path="res://Portal.tscn" id="2_c8emj"]
-[ext_resource type="PackedScene" path="res://Platform.tscn" id="2_druko"]
+[ext_resource type="PackedScene" uid="uid://bi6cyleuokliv" path="res://Portal.tscn" id="2_c8emj"]
+[ext_resource type="PackedScene" uid="uid://csheys7q0mlyg" path="res://Platform.tscn" id="2_druko"]
 [ext_resource type="Texture2D" uid="uid://cumqn2nwtc6q0" path="res://assets/tiles/background_wall.png" id="3_rnbob"]
 
 [node name="Level A" type="Node2D"]
@@ -18,6 +18,7 @@ scale = Vector2(30, 1)
 
 [node name="Portal" parent="CanvasGroup2" instance=ExtResource("2_c8emj")]
 position = Vector2(200, 340)
+scale = Vector2(-5, 5)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true

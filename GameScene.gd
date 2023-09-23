@@ -1,17 +1,36 @@
 extends Node2D
 
+# Portal Logic
 var portals = {}
-var current_portal: Area2D
-var next_portal: Area2D
-var previous_next_portal: Area2D
-@onready var player: CharacterBody2D = $Player
+var current_portal: Node2D
+var next_portal: Node2D
+var current_tunnel: Area2D
+
+# Player
+@onready var player := $Player
+var player_can_teleport = true
+
+# Fade
+@onready var fade_texture_block := $Fade/TextureRect
+var fade_gradient := Gradient.new()
+var fade_gradient_texture := GradientTexture2D.new()
+
+# DEBUG
+@onready var slider := $Fade/HSlider
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	register_portals()
+	fade_gradient.offsets = [0.0, 0.0]
+	fade_gradient.colors = [Color.BLACK, Color.TRANSPARENT]
+	fade_gradient_texture.gradient = fade_gradient
+	fade_texture_block.texture = fade_gradient_texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if current_tunnel != null:
+		set_gradient(1.5-(distance(player, current_tunnel) / 300))
+	set_gradient(slider.value)
 	pass
 	
 # Portal Service
@@ -39,19 +58,50 @@ func get_all_children(node: Node, children:=[]):
 		children = get_all_children(child, children)
 	return children
 
-func connect_to_portal(portal: Area2D):
+func connect_to_portal(portal: Node2D):
 	portal.portal_entered.connect(_on_portal_entered)
 	portal.portal_exited.connect(_on_portal_exited)
+	portal.tunnel_entered.connect(_on_tunnel_entered)
+	portal.tunnel_exited.connect(_on_tunnel_exited)
 
-func _on_portal_entered(portal: Area2D):
+func _on_portal_entered(portal: Node2D, body: Node2D):
+	if body != player || !player_can_teleport:
+		return
+	player_can_teleport = false
 	current_portal = portal
 	next_portal = portals[portal]
 	print(next_portal)
 	teleport_player()
 
-func _on_portal_exited(portal: Area2D):
+func _on_portal_exited(portal: Node2D, body: Node2D):
+	if body != player:
+		return
 	current_portal = null
 	next_portal = null
+	player_can_teleport = true
 
 func teleport_player():
 	player.global_position = next_portal.global_position
+
+func _on_tunnel_entered(portal: Node2D, body: Node2D, exiting: bool):
+	if body != player:
+		return
+	current_tunnel = portal.get_node("Tunnel")
+	print(current_tunnel)
+
+func _on_tunnel_exited(portal: Node2D, body: Node2D):
+	print("on_tunnel_exited")
+	if body != player:
+		return
+	current_tunnel = null
+	
+func set_gradient(value: float):
+	var result = min(1, max(0, absf(value)))
+	fade_gradient.offsets = [result, result + 0.2]
+	if value > 0:
+		fade_gradient.colors = [Color.BLACK, Color.TRANSPARENT]
+	else:
+		fade_gradient.colors = [Color.TRANSPARENT, Color.BLACK]
+
+func distance(n1: Node2D, n2: Node2D):
+	return n1.get_global_transform().get_origin().x - n2.get_global_transform().get_origin().x

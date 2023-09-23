@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://mnbmx45i3gfh"]
+
+[ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_mhe83"]
+[ext_resource type="PackedScene" uid="uid://bi6cyleuokliv" path="res://Portal.tscn" id="2_u6bke"]
+
+[node name="TileMapTestScene2" type="TileMap"]
+tile_set = ExtResource("1_mhe83")
+format = 2
+layer_0/name = "Background"
+layer_0/z_index = -1
+layer_1/name = "Physics"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(1245184, 262145, 0, 1245185, 262145, 0, 1245186, 262145, 0, 1245187, 262145, 0, 1245188, 262145, 0, 1245189, 262145, 0, 1245190, 262145, 0, 1245191, 262145, 0, 1245192, 262145, 0, 1245193, 262145, 0, 1245194, 262145, 0, 1245195, 262145, 0, 1245196, 262145, 0, 1245197, 262145, 0, 1245198, 262145, 0, 1245199, 262145, 0, 1245200, 262145, 0, 1245201, 262145, 0, 1245202, 262145, 0, 1245203, 262145, 0, 1245204, 262145, 0, 1245205, 262145, 0, 1245206, 262145, 0, 1245207, 262145, 0, 1245208, 262145, 0, 1245209, 262145, 0, 1245210, 262145, 0, 1245211, 262145, 0, 1245212, 262145, 0, 1245213, 262145, 0, 1245214, 262145, 0, 1245215, 262145, 0, 1245216, 262145, 0, 1245217, 262145, 0, 1245218, 262145, 0, 1245219, 262145, 0, 1245220, 262145, 0, 1245221, 262145, 0, 1245222, 262145, 0, 1245223, 262145, 0, 1245224, 262145, 0, 1245225, 262145, 0, 589862, 131073, 1, 655398, 131073, 1, 720934, 131073, 1, 786470, 131073, 1, 852006, 131073, 1, 917542, 131073, 1, 983078, 131073, 1, 1048614, 131073, 1, 1114150, 131073, 1, 1179686, 131073, 1)
+layer_2/name = "Foreground"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 1
+layer_2/tile_data = PackedInt32Array(1179681, 196609, 3, 1179685, 65537, 65537)
+
+[node name="Portal A" parent="." instance=ExtResource("2_u6bke")]
+z_index = 1
+position = Vector2(1241, 593)
+scale = Vector2(1.5, 1.5)

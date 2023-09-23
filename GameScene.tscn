@@ -1,17 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx1ax31g3mbp5"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_56ctb"]
-[ext_resource type="PackedScene" uid="uid://bbxwib8x2mjhd" path="res://Level A.tscn" id="2_fo8jt"]
-[ext_resource type="PackedScene" uid="uid://yrimgu6qdk4c" path="res://Level B.tscn" id="4_ll1nc"]
+[ext_resource type="PackedScene" uid="uid://mnbmx45i3gfh" path="res://TileMapTestScene2.tscn" id="4_p3av6"]
+[ext_resource type="PackedScene" uid="uid://d2edjat5rypvf" path="res://TileMapTestScene.tscn" id="4_x5pq2"]
 [ext_resource type="PackedScene" uid="uid://ce8vc25cnr5hg" path="res://Player.tscn" id="4_yyw3a"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_56ctb")
 
-[node name="Level A" parent="." instance=ExtResource("2_fo8jt")]
-position = Vector2(-328, -63)
-
-[node name="Level B" parent="." instance=ExtResource("4_ll1nc")]
-position = Vector2(1500, 0)
-
 [node name="Player" parent="." instance=ExtResource("4_yyw3a")]
+SPEED = 500
+JUMP_VELOCITY = -600
+
+[node name="TileMap" parent="." instance=ExtResource("4_x5pq2")]
+position = Vector2(0, 1663)
+
+[node name="TileMapTestScene2" parent="." instance=ExtResource("4_p3av6")]
+position = Vector2(-3778, -2056)
+scale = Vector2(4, 4)

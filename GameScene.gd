@@ -10,44 +10,38 @@ var current_tunnel: Area2D
 @onready var player := $Player
 var player_can_teleport = true
 
-# Fade
-@onready var fade_texture_block := $Fade/TextureRect
-var fade_gradient := Gradient.new()
-var fade_gradient_texture := GradientTexture2D.new()
-
 # DEBUG
 @onready var slider := $Fade/HSlider
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	register_portals()
-	fade_gradient.offsets = [0.0, 0.0]
-	fade_gradient.colors = [Color.BLACK, Color.TRANSPARENT]
-	fade_gradient_texture.gradient = fade_gradient
-	fade_texture_block.texture = fade_gradient_texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if current_tunnel != null:
-		#set_gradient(distance(player, current_tunnel))
-		var ds = min(1, max(0, absf(distance(player, current_tunnel))))
-		var rev = max(0,0.6 - ds*1.3)
-		var sc = 4 + (60 * rev)
-		print(ds)
-		$Player/Node2D.scale = Vector2(sc,sc)
-		var camfactor = 1 - ds
-		if camfactor < 0.01:
-			$Player/Camera2D.position_smoothing_enabled = false
-		else:
-			$Player/Camera2D.position_smoothing_enabled = true
-		
-		$Player/Camera2D.position_smoothing_speed = 5 * 1/(camfactor+0.1)
-		$Player/Camera2D.drag_top_margin = 0.2 * camfactor
-		$Player/Camera2D.drag_bottom_margin = 0.2 * camfactor
-		$Player/Camera2D.drag_left_margin = 0.2 * camfactor
-		$Player/Camera2D.drag_right_margin = 0.2 * camfactor
-	#set_gradient(slider.value)
-	pass
+	if current_tunnel == null:
+		return
+	handle_fog()
+	
+func handle_fog():
+	var ds = min(1, max(0, absf(distance(player, current_tunnel))))
+	var rev = max(0,0.6 - ds*1.3)
+	var sc = 4 + (60 * rev)
+	$Player/Fog.scale = Vector2(sc,sc)
+	var camfactor = 1 - ds
+	if camfactor < 0.01:
+		$Player/Camera2D.position_smoothing_enabled = false
+	elif camfactor < 1:
+		$Player/Fog.visible = true
+		$Player/Camera2D.position_smoothing_enabled = true
+	else:
+		$Player/Fog.visible = false
+	
+	$Player/Camera2D.position_smoothing_speed = 5 * 1/(camfactor+0.1)
+	$Player/Camera2D.drag_top_margin = 0.2 * camfactor
+	$Player/Camera2D.drag_bottom_margin = 0.2 * camfactor
+	$Player/Camera2D.drag_left_margin = 0.2 * camfactor
+	$Player/Camera2D.drag_right_margin = 0.2 * camfactor
 	
 # Portal Service
 # Refactor with GAMEJAMDEV-1234
@@ -111,15 +105,6 @@ func _on_tunnel_exited(portal: Node2D, body: Node2D):
 		return
 	current_tunnel = null
 	
-func set_gradient(value: float):
-	var result = min(1, max(0, absf(value)))*1.3
-	if value >= 0:
-		fade_gradient.colors = [Color.BLACK, Color.TRANSPARENT]
-		fade_gradient.offsets = [result - 0.3, result]
-	else:
-		fade_gradient.colors = [Color.TRANSPARENT, Color.BLACK]
-		fade_gradient.offsets = [1.3 - result - 0.3, 1.3 - result]
-
 func distance(player: Node2D, tunnel: Node2D):
 	var shape = ((tunnel as Area2D).get_node("CollisionShape2D") as CollisionShape2D)
 	var rect = (shape.shape as RectangleShape2D)

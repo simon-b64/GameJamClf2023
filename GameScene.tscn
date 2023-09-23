@@ -1,34 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx1ax31g3mbp5"]
+[gd_scene load_steps=5 format=3 uid="uid://cx1ax31g3mbp5"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_56ctb"]
-[ext_resource type="PackedScene" uid="uid://doc1yss2pjt58" path="res://Level A.tscn" id="2_fo8jt"]
-[ext_resource type="PackedScene" uid="uid://blaq5plrpq4yb" path="res://Level B.tscn" id="4_ll1nc"]
+[ext_resource type="PackedScene" uid="uid://bbxwib8x2mjhd" path="res://Level A.tscn" id="2_fo8jt"]
+[ext_resource type="PackedScene" uid="uid://yrimgu6qdk4c" path="res://Level B.tscn" id="4_ll1nc"]
 [ext_resource type="PackedScene" uid="uid://ce8vc25cnr5hg" path="res://Player.tscn" id="4_yyw3a"]
-
-[sub_resource type="Gradient" id="Gradient_3jp5j"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jl0eo"]
-gradient = SubResource("Gradient_3jp5j")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_56ctb")
-
-[node name="Fade" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Fade"]
-offset_left = -23.0
-offset_right = 1301.0
-offset_bottom = 720.0
-texture = SubResource("GradientTexture2D_jl0eo")
-
-[node name="HSlider" type="HSlider" parent="Fade"]
-offset_left = 200.0
-offset_top = 600.0
-offset_right = 700.0
-offset_bottom = 616.0
-max_value = 1.0
-step = 0.01
 
 [node name="Level A" parent="." instance=ExtResource("2_fo8jt")]
 position = Vector2(-328, -63)

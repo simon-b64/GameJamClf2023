@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://yl2ljv6kn30w"]
+[gd_scene load_steps=5 format=3 uid="uid://bi6cyleuokliv"]
 
 [ext_resource type="Script" path="res://Portal.gd" id="1_horcd"]
-[ext_resource type="Texture2D" uid="uid://cumqn2nwtc6q0" path="res://assets/tiles/background_wall.png" id="2_3i2ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh5cu"]
 
@@ -27,7 +26,6 @@ scale = Vector2(0.25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
 position = Vector2(36, -4.6)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dh5cu")
 
 [node name="Bottom Wall" type="StaticBody2D" parent="."]
@@ -65,14 +63,7 @@ position = Vector2(-16.4, 1.4)
 scale = Vector2(0.224, 1.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Back Wall2"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_yxprh")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(-29.2, 0)
-scale = Vector2(2.432, 0.688)
-texture = ExtResource("2_3i2ya")
 
 [connection signal="body_entered" from="Tunnel" to="." method="_on_tunnel_entered"]
 [connection signal="body_exited" from="Tunnel" to="." method="_on_tunnel_exit"]

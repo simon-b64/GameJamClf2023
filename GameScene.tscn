@@ -1,35 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx1ax31g3mbp5"]
+[gd_scene load_steps=5 format=3 uid="uid://cx1ax31g3mbp5"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_56ctb"]
-[ext_resource type="Script" path="res://PlayerController.gd" id="1_twg3a"]
 [ext_resource type="PackedScene" uid="uid://doc1yss2pjt58" path="res://Level A.tscn" id="2_fo8jt"]
 [ext_resource type="PackedScene" uid="uid://blaq5plrpq4yb" path="res://Level B.tscn" id="4_ll1nc"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0iicc"]
-size = Vector2(20, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg7i5"]
+[ext_resource type="PackedScene" uid="uid://ce8vc25cnr5hg" path="res://Player.tscn" id="4_yyw3a"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_56ctb")
-
-[node name="Player" type="CharacterBody2D" parent="."]
-slide_on_ceiling = false
-script = ExtResource("1_twg3a")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = SubResource("PlaceholderTexture2D_0iicc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_rg7i5")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 
 [node name="Level A" parent="." instance=ExtResource("2_fo8jt")]
 position = Vector2(-328, -63)
 
 [node name="Level B" parent="." instance=ExtResource("4_ll1nc")]
 position = Vector2(1500, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_yyw3a")]

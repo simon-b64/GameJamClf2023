@@ -1,19 +1,21 @@
 extends Area2D
 
-var player = null
+signal portal_entered(portal: Area2D)
+signal portal_exited(portal: Area2D)
+signal portal_teleported
 
-func _on_door_body_entered(body):
+var direction
+
+func _on_door_body_entered(body: Node2D):
 	if body.get_name() != "Player":
 		return
-	player = body
+	direction = self.position - body.position
+	print(self.position)
+	print(direction)
+	portal_entered.emit(self)
 	
-func _on_door_body_exit(body):
+func _on_door_body_exit(body: Node2D):
 	if body.get_name() != "Player":
 		return
-	player = null
-
-func _process(delta):
-	if player == null:
-		return
-	print(self.get_transform().x - player.get_transform().x)
-	pass
+	print(self.position - body.position)
+	portal_exited.emit(self)

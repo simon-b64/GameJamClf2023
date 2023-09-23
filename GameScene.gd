@@ -96,9 +96,9 @@ func _on_tunnel_exited(portal: Node2D, body: Node2D):
 	current_tunnel = null
 	
 func set_gradient(value: float):
-	var result = min(1, max(0, absf(value)))
-	fade_gradient.offsets = [result, result + 0.2]
-	if value > 0:
+	var result = min(1, max(0, absf(value)))*1.3
+	fade_gradient.offsets = [result - 0.3, result]
+	if value >= 0:
 		fade_gradient.colors = [Color.BLACK, Color.TRANSPARENT]
 	else:
 		fade_gradient.colors = [Color.TRANSPARENT, Color.BLACK]

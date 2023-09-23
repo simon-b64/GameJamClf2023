@@ -43,6 +43,8 @@ func register_portals():
 		else:
 			portal_assignment[portal.get_name()] = [portal]
 	for assignment in portal_assignment.values():
+		if len(assignment) != 2:
+			continue
 		portals[assignment[0]] = assignment[1]
 		portals[assignment[1]] = assignment[0]
 

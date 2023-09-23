@@ -12,7 +12,6 @@ script = ExtResource("1_56ctb")
 [node name="Player" parent="." instance=ExtResource("4_yyw3a")]
 position = Vector2(982, -752)
 SPEED = 500
-JUMP_VELOCITY = -600
 metadata/_edit_lock_ = true
 
 [node name="TileMap" parent="." instance=ExtResource("4_x5pq2")]
@@ -22,7 +21,6 @@ scale = Vector2(2.5, 2.5)
 [node name="FirstScene" parent="." instance=ExtResource("6_duk4u")]
 position = Vector2(958, -1201)
 scale = Vector2(2.5, 2.5)
-metadata/_edit_lock_ = true
 
 [node name="MainMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_euepo")

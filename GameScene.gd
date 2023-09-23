@@ -29,8 +29,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if current_tunnel != null:
-		set_gradient(1.5-(distance(player, current_tunnel) / 300))
-	set_gradient(slider.value)
+		set_gradient(distance(player, current_tunnel))
+	#set_gradient(slider.value)
 	pass
 	
 # Portal Service
@@ -97,11 +97,23 @@ func _on_tunnel_exited(portal: Node2D, body: Node2D):
 	
 func set_gradient(value: float):
 	var result = min(1, max(0, absf(value)))*1.3
-	fade_gradient.offsets = [result - 0.3, result]
 	if value >= 0:
 		fade_gradient.colors = [Color.BLACK, Color.TRANSPARENT]
+		fade_gradient.offsets = [result - 0.3, result]
 	else:
 		fade_gradient.colors = [Color.TRANSPARENT, Color.BLACK]
+		fade_gradient.offsets = [1.3 - result - 0.3, 1.3 - result]
 
-func distance(n1: Node2D, n2: Node2D):
-	return n1.get_global_transform().get_origin().x - n2.get_global_transform().get_origin().x
+func distance(player: Node2D, tunnel: Node2D):
+	var shape = ((tunnel as Area2D).get_node("CollisionShape2D") as CollisionShape2D)
+	var rect = (shape.shape as RectangleShape2D)
+	var size = tunnel.get_global_transform().basis_xform(rect.size)
+	
+	var rpos = player.get_global_transform().get_origin() - tunnel.get_global_transform().get_origin()
+	
+	var apos = max(-1,min(0,(rpos / abs(size)).x - 0.5 ))
+	if sign(size.x) > 0:
+		return abs(apos) - 1
+	else :
+		return abs(apos)
+

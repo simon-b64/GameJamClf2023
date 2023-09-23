@@ -1,15 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://yl2ljv6kn30w"]
+[gd_scene load_steps=6 format=3 uid="uid://yl2ljv6kn30w"]
 
-[ext_resource type="Texture2D" uid="uid://cq6niu3aaxasw" path="res://assets/portal.png" id="1_87f4q"]
 [ext_resource type="Script" path="res://Portal.gd" id="1_horcd"]
-
-[sub_resource type="Gradient" id="Gradient_gl8yw"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_o1aq1"]
-gradient = SubResource("Gradient_gl8yw")
-width = 20
-height = 20
+[ext_resource type="Texture2D" uid="uid://cumqn2nwtc6q0" path="res://assets/tiles/background_wall.png" id="2_3i2ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh5cu"]
 
@@ -23,25 +15,19 @@ scale = Vector2(5, 5)
 script = ExtResource("1_horcd")
 
 [node name="Tunnel" type="Area2D" parent="."]
-position = Vector2(-40, 0)
-scale = Vector2(3, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Tunnel"]
-texture = SubResource("GradientTexture2D_o1aq1")
+position = Vector2(-51, -0.2)
+scale = Vector2(1.496, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tunnel"]
 shape = SubResource("RectangleShape2D_dh5cu")
 
 [node name="Portal" type="Area2D" parent="."]
-position = Vector2(7.4, 7)
+position = Vector2(-28.2, 6.4)
 scale = Vector2(0.25, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Portal"]
-position = Vector2(-0.1, -0.1)
-scale = Vector2(0.188785, 0.230233)
-texture = ExtResource("1_87f4q")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(36, -4.6)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_dh5cu")
 
 [node name="Bottom Wall" type="StaticBody2D" parent="."]
@@ -73,6 +59,20 @@ texture = SubResource("PlaceholderTexture2D_qcfnd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Back Wall"]
 shape = SubResource("RectangleShape2D_yxprh")
+
+[node name="Back Wall2" type="StaticBody2D" parent="."]
+position = Vector2(-16.4, 1.4)
+scale = Vector2(0.224, 1.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back Wall2"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_yxprh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-29.2, 0)
+scale = Vector2(2.432, 0.688)
+texture = ExtResource("2_3i2ya")
 
 [connection signal="body_entered" from="Tunnel" to="." method="_on_tunnel_entered"]
 [connection signal="body_exited" from="Tunnel" to="." method="_on_tunnel_exit"]

@@ -32,7 +32,7 @@ func _process(delta):
 		#set_gradient(distance(player, current_tunnel))
 		var ds = min(1, max(0, absf(distance(player, current_tunnel))))
 		var rev = max(0,0.6 - ds*1.3)
-		var sc = 1 + (60 * rev)
+		var sc = 4 + (60 * rev)
 		print(ds)
 		$Player/Node2D.scale = Vector2(sc,sc)
 		var camfactor = 1 - ds

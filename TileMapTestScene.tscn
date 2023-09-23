@@ -51,4 +51,7 @@ position = Vector2(896, 720)
 scale = Vector2(-1, 1)
 
 [node name="Button" parent="." instance=ExtResource("5_c8ssi")]
+z_index = 1
 position = Vector2(437.5, 720)
+color = 2
+timer_duration = null

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5gm22f16oevo"]
 
-[ext_resource type="Texture2D" uid="uid://d0jn164qtjti6" path="res://assets/tiles/Button.png" id="1_hmkoi"]
 [ext_resource type="Script" path="res://Button.gd" id="1_lxkgl"]
+[ext_resource type="Texture2D" uid="uid://sob0x37suukl" path="res://assets/tiles/Button-Sheet.png" id="2_2pgl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba1l6"]
 
@@ -11,17 +11,20 @@
 script = ExtResource("1_lxkgl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hmkoi")
-hframes = 2
+texture = ExtResource("2_2pgl7")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11.5)
-scale = Vector2(1.5, 0.45)
+position = Vector2(0, 14)
+scale = Vector2(1.5, 0.2)
 shape = SubResource("RectangleShape2D_ba1l6")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 6)
-scale = Vector2(1, 0.1)
+position = Vector2(0, 9.5)
+scale = Vector2(1, 0.25)
 shape = SubResource("RectangleShape2D_odxsd")
+
+[connection signal="body_entered" from="Area2D" to="." method="on_button_pressed"]
+[connection signal="body_exited" from="Area2D" to="." method="on_button_released"]

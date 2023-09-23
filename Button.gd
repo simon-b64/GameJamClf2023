@@ -1,22 +1,24 @@
+@tool
 extends StaticBody2D
 
 signal button_pressed(button: StaticBody2D, body: Node2D)
 signal button_released(button: StaticBody2D, body: Node2D)
 
-@export_enum("BLUE") var color
-var frame
-
-func _ready():
-	match color:
-		"BLUE": frame = 0
-		"RED": frame = 2
-		"GREEN": frame = 4
-		"ORANGE": frame = 6
+enum Colors {BLUE = 0, RED = 2, GREEN = 4, ORANGE = 6}
+enum ButtonTypes {ACTIVE, TOGGLE, TIMER}
+@export var color := Colors.BLUE:
+	set(value):
+		color = value
+		$Sprite2D.frame = value
+@export var type := ButtonTypes.TOGGLE
+@export var timer_duration = 0
 
 func on_button_pressed(body: Node2D):
-	$Sprite2D.vframes += 1
+	if body == self:
+		return
+	$Sprite2D.frame += 1
 	button_pressed.emit(self, body)
 
 func on_button_released(body: Node2D):
-	$Sprite2D.vframes -= 1
+	$Sprite2D.frame -= 1
 	button_released.emit(self, body)

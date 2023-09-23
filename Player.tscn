@@ -304,6 +304,7 @@ parameters/GroundMovement/blend_position = 0
 parameters/Idle/blend_position = 0.4722
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 position = Vector2(1, -4)
 scale = Vector2(59.05, 59.05)
 

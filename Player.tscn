@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ce8vc25cnr5hg"]
+[gd_scene load_steps=30 format=3 uid="uid://cbkf64ghlyagq"]
 
 [ext_resource type="Script" path="res://PlayerController.gd" id="1_w6mjw"]
 [ext_resource type="Texture2D" uid="uid://dphiva4cyy4vm" path="res://assets/tiles/Character-Sheet.png" id="2_svos6"]
@@ -302,3 +302,12 @@ active = true
 parameters/AirMovement/blend_position = 0
 parameters/GroundMovement/blend_position = 0
 parameters/Idle/blend_position = 0.4722
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1, -4)
+scale = Vector2(30, 30)
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D"]
+position = Vector2(0, 4.5)
+color = Color(0.12549, 0.12549, 0.12549, 1)
+polygon = PackedVector2Array(-372, 168.5, -1158.5, 919.5, 1414.5, 826.5, 1097, -773.5, -887.5, -574.5, -1126.5, 919.5, 2.5, 54.5, -10.5, -7.5, 1.5, -15.5, 12.5, -6, 0.485996, 3.29965, -41, -11)

@@ -29,7 +29,23 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if current_tunnel != null:
-		set_gradient(distance(player, current_tunnel))
+		#set_gradient(distance(player, current_tunnel))
+		var ds = min(1, max(0, absf(distance(player, current_tunnel))))
+		var rev = max(0,0.6 - ds*1.3)
+		var sc = 1 + (60 * rev)
+		print(ds)
+		$Player/Node2D.scale = Vector2(sc,sc)
+		var camfactor = 1 - ds
+		if camfactor < 0.01:
+			$Player/Camera2D.position_smoothing_enabled = false
+		else:
+			$Player/Camera2D.position_smoothing_enabled = true
+		
+		$Player/Camera2D.position_smoothing_speed = 5 * 1/(camfactor+0.1)
+		$Player/Camera2D.drag_top_margin = 0.2 * camfactor
+		$Player/Camera2D.drag_bottom_margin = 0.2 * camfactor
+		$Player/Camera2D.drag_left_margin = 0.2 * camfactor
+		$Player/Camera2D.drag_right_margin = 0.2 * camfactor
 	#set_gradient(slider.value)
 	pass
 	
@@ -81,7 +97,7 @@ func _on_portal_exited(portal: Node2D, body: Node2D):
 	player_can_teleport = true
 
 func teleport_player():
-	player.global_position = next_portal.global_position
+	player.global_position = next_portal.get_node("Portal").global_position
 
 func _on_tunnel_entered(portal: Node2D, body: Node2D, exiting: bool):
 	if body != player:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi6cyleuokliv"]
+[gd_scene load_steps=4 format=3 uid="uid://yl2ljv6kn30w"]
 
 [ext_resource type="Script" path="res://Portal.gd" id="1_horcd"]
 
@@ -7,7 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxprh"]
 
 [node name="Node2D2" type="Node2D"]
-scale = Vector2(5, 5)
+z_index = 5
+scale = Vector2(2, 1.5)
 script = ExtResource("1_horcd")
 
 [node name="Tunnel" type="Area2D" parent="."]

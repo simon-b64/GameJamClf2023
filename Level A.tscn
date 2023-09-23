@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbxwib8x2mjhd"]
 
 [ext_resource type="PackedScene" uid="uid://yl2ljv6kn30w" path="res://Portal.tscn" id="2_c8emj"]
-[ext_resource type="PackedScene" uid="uid://cvec0qkdj88j7" path="res://Platform.tscn" id="2_druko"]
+[ext_resource type="PackedScene" path="res://Platform.tscn" id="2_druko"]
 
 [node name="Level A" type="Node2D"]
 

@@ -22,6 +22,7 @@ func _ready():
 	children = get_all_children(self)
 	register_portals()
 	register_keys()
+	register_locked_entries()
 
 func get_all_children(node: Node, children:=[]):
 	children.push_back(node)
@@ -59,6 +60,14 @@ func register_keys():
 func connect_to_key(key: Area2D):
 	key.key_entered.connect(_on_key_entered)
 
+func register_locked_entries():
+	var locked_entries = children.filter(func(child): return child.scene_file_path == "res://LockedEntry.tscn")
+	for locked_entry in locked_entries:
+		connect_to_locked_entry(locked_entry)
+
+func connect_to_locked_entry(locked_entry: StaticBody2D):
+	locked_entry.locked_entry_entered.connect(_on_locked_entry_entered)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if current_tunnel == null:
@@ -94,7 +103,6 @@ func _on_portal_entered(portal: Node2D, body: Node2D):
 	player_can_teleport = false
 	current_portal = portal
 	next_portal = portals[portal]
-	print(next_portal)
 	teleport_player()
 
 func _on_portal_exited(portal: Node2D, body: Node2D):
@@ -107,14 +115,12 @@ func _on_portal_exited(portal: Node2D, body: Node2D):
 func teleport_player():
 	player.global_position = next_portal.get_node("Portal").global_position
 
-func _on_tunnel_entered(portal: Node2D, body: Node2D, exiting: bool):
+func _on_tunnel_entered(portal: Node2D, body: Node2D):
 	if body != player:
 		return
 	current_tunnel = portal.get_node("Tunnel")
-	print(current_tunnel)
 
 func _on_tunnel_exited(portal: Node2D, body: Node2D):
-	print("on_tunnel_exited")
 	if body != player:
 		return
 	current_tunnel = null
@@ -140,4 +146,12 @@ func _on_key_entered(key: Area2D, body: Node2D):
 		return
 	amount_of_keys += 1
 	key.queue_free()
-	print(amount_of_keys)
+
+
+# LOCKED_ENTRY LOGIC
+
+func _on_locked_entry_entered(locked_entry: StaticBody2D, body: Node2D):
+	if body != player || amount_of_keys <= 0:
+		return
+	amount_of_keys -= 1
+	locked_entry.queue_free()

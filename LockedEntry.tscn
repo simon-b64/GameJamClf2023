@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://04ax73ojjr4q"]
+
+[ext_resource type="Texture2D" uid="uid://bhrjwi8qx5jml" path="res://assets/tiles/DoorLockLeft.png" id="1_3pj1a"]
+[ext_resource type="Script" path="res://LockedEntry.gd" id="1_b7bdm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oa0s6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksgma"]
+
+[node name="Locked Entry" type="StaticBody2D"]
+script = ExtResource("1_b7bdm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3pj1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 0)
+scale = Vector2(2.2, 1.6)
+shape = SubResource("RectangleShape2D_oa0s6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-10, 0)
+scale = Vector2(2.4, 1.5)
+shape = SubResource("RectangleShape2D_ksgma")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_locked_entry_entered"]

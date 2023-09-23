@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2edjat5rypvf"]
 
 [ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_ntl7x"]
-[ext_resource type="PackedScene" uid="uid://bi6cyleuokliv" path="res://Portal.tscn" id="3_cylkg"]
-[ext_resource type="PackedScene" uid="uid://cy71vawm5vgct" path="res://Key.tscn" id="3_n36op"]
-[ext_resource type="PackedScene" uid="uid://04ax73ojjr4q" path="res://LockedEntry.tscn" id="4_quuoh"]
+[ext_resource type="PackedScene" uid="uid://yl2ljv6kn30w" path="res://Portal.tscn" id="3_cylkg"]
+[ext_resource type="PackedScene" path="res://Key.tscn" id="3_n36op"]
+[ext_resource type="PackedScene" path="res://LockedEntry.tscn" id="4_quuoh"]
 
 [node name="TileMap" type="TileMap"]
 position = Vector2(126, -54)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5gm22f16oevo"]
+
+[ext_resource type="Texture2D" uid="uid://d0jn164qtjti6" path="res://assets/tiles/Button.png" id="1_hmkoi"]
+[ext_resource type="Script" path="res://Button.gd" id="1_lxkgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba1l6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odxsd"]
+
+[node name="Button" type="StaticBody2D"]
+script = ExtResource("1_lxkgl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hmkoi")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+scale = Vector2(1.5, 0.45)
+shape = SubResource("RectangleShape2D_ba1l6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+scale = Vector2(1, 0.1)
+shape = SubResource("RectangleShape2D_odxsd")

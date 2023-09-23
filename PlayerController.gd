@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var SPEED: int = 300.0
 @export var JUMP_VELOCITY: int = -800
 
-var JUMP_BUCKET_CONST: float = 0.4
+var JUMP_BUCKET_CONST: float = 0.3
 var jump_bucket: int = JUMP_VELOCITY
 var delta_since_latst_vel_add: int = 0
 
@@ -11,15 +11,16 @@ var delta_since_latst_vel_add: int = 0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
-	var jump_mult = min(1,max(0.1, delta * JUMP_BUCKET_CONST))
+	var jump_mult = min(1,max(0.1, delta**2 * JUMP_BUCKET_CONST))
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		print(velocity.y)
-		if Input.is_action_pressed("move_jump") and jump_bucket != JUMP_VELOCITY:
+		if Input.is_action_pressed("move_jump") && velocity.y < 0:
 			velocity.y += jump_bucket * jump_mult
 			jump_bucket *= 1 - jump_mult
+		else:
+			jump_bucket = 0
 	else:
 		jump_bucket = JUMP_VELOCITY
 

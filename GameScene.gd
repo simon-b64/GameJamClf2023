@@ -33,7 +33,6 @@ func get_all_children(node: Node, children:=[]):
 	return children
 
 func register_portals():
-	print(self)
 	var portal_array = children.filter(func(child): return child.scene_file_path == "res://Portal.tscn")
 	var portal_assignment = {}
 	for portal in portal_array:

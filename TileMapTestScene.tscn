@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2edjat5rypvf"]
+[gd_scene load_steps=6 format=3 uid="uid://d2edjat5rypvf"]
 
 [ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_ntl7x"]
-[ext_resource type="PackedScene" uid="uid://yl2ljv6kn30w" path="res://Portal.tscn" id="3_cylkg"]
-[ext_resource type="PackedScene" path="res://Key.tscn" id="3_n36op"]
-[ext_resource type="PackedScene" path="res://LockedEntry.tscn" id="4_quuoh"]
+[ext_resource type="PackedScene" uid="uid://bi6cyleuokliv" path="res://Portal.tscn" id="3_cylkg"]
+[ext_resource type="PackedScene" uid="uid://cy71vawm5vgct" path="res://Key.tscn" id="3_n36op"]
+[ext_resource type="PackedScene" uid="uid://04ax73ojjr4q" path="res://LockedEntry.tscn" id="4_quuoh"]
+[ext_resource type="PackedScene" uid="uid://b5gm22f16oevo" path="res://Button.tscn" id="5_c8ssi"]
 
 [node name="TileMap" type="TileMap"]
 position = Vector2(126, -54)
@@ -34,7 +35,7 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
 layer_3/z_index = 1
-layer_3/tile_data = PackedInt32Array(1441830, 1, 8, 1441821, 196609, 3, 19, 786433, 0, 65555, 786433, 0, 131091, 786433, 0, 196627, 786433, 0, 262163, 786433, 0, 327699, 786433, 0, 393235, 786433, 0, 458771, 786433, 0, 524307, 786433, 0, 589843, 786433, 0, 655379, 786433, 0, 720915, 786433, 0, 786451, 786433, 0, 851987, 786433, 0, 917523, 786433, 0, 983059, 786433, 0, 1048595, 786433, 0, 1114131, 786433, 0, 1179667, 1, 6, 1376285, 983041, 0, 1376284, 917505, 0, 1441793, 65537, 2, 1441792, 65537, 65537, 1441797, 327681, 2, 1441819, 65537, 3, 1441825, 65537, 65537)
+layer_3/tile_data = PackedInt32Array(1441821, 196609, 3, 19, 786433, 0, 65555, 786433, 0, 131091, 786433, 0, 196627, 786433, 0, 262163, 786433, 0, 327699, 786433, 0, 393235, 786433, 0, 458771, 786433, 0, 524307, 786433, 0, 589843, 786433, 0, 655379, 786433, 0, 720915, 786433, 0, 786451, 786433, 0, 851987, 786433, 0, 917523, 786433, 0, 983059, 786433, 0, 1048595, 786433, 0, 1114131, 786433, 0, 1179667, 1, 6, 1376285, 983041, 0, 1376284, 917505, 0, 1441793, 65537, 2, 1441792, 65537, 65537, 1441797, 327681, 2, 1441819, 65537, 3, 1441825, 65537, 65537)
 
 [node name="Portal02" parent="." instance=ExtResource("3_cylkg")]
 z_index = 1
@@ -48,3 +49,6 @@ position = Vector2(623, 719)
 z_index = 1
 position = Vector2(896, 720)
 scale = Vector2(-1, 1)
+
+[node name="Button" parent="." instance=ExtResource("5_c8ssi")]
+position = Vector2(437.5, 720)

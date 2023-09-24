@@ -45,17 +45,18 @@ func _physics_process(delta: float):
 
 func on_button_pressed(body: Node2D):
 	is_blocked = true
+	if type == ButtonTypes.TIMER:
+		timer.stop()
 	if body == self || is_pressed:
 		return
 	is_pressed = true
 	$Sprite2D.frame = color + 1
-	if (type == ButtonTypes.TIMER):
-		timer.wait_time = timer_duration
-		timer.start()
 	button_pressed.emit(self, body)
 
 func on_button_released(body: Node2D):
 	is_blocked = false
+	if (type == ButtonTypes.TIMER):
+		start_timer()
 	if type != ButtonTypes.TOGGLE:
 		return
 	should_release = true
@@ -65,3 +66,7 @@ func release_button():
 	should_release = false
 	$Sprite2D.frame = color
 	button_released.emit(self)
+
+func start_timer():
+	timer.wait_time = timer_duration
+	timer.start()

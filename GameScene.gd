@@ -17,6 +17,10 @@ var amount_of_keys := 0
 # DEBUG
 @onready var slider := $Fade/HSlider
 
+# Timer
+var timer := 0.0
+@onready var timer_label := $CanvasLayer/TimerLabel
+
 # YEEEAAAAHHH BOOOOIIIIII
 @onready var radio := $TestScene/Radio
 @onready var musicPlayer := $MainMusicPlayer
@@ -28,6 +32,7 @@ func _ready():
 	register_keys()
 	register_locked_entries()
 	register_text_triggers()
+	connect_to_radio()
 
 func get_all_children(node: Node, children:=[]):
 	children.push_back(node)
@@ -82,9 +87,13 @@ func register_text_triggers():
 func connect_to_text_trigger(text_trigger):
 	text_trigger.text_trigger_entered.connect(_on_text_trigger)
 
+func connect_to_radio():
+	radio.radio_entered.connect(_on_radio_entered)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	handle_volume()
+	handle_timer(delta)
 	if current_tunnel == null:
 		return
 	handle_fog()
@@ -113,6 +122,10 @@ func handle_volume():
 	var distance = player.get_global_transform().get_origin().distance_squared_to(radio.get_global_transform().get_origin())
 	var clamped_distance = min(1, max(0, log(distance)/50))
 	musicPlayer.volume_db = 2 * (1 - clamped_distance)
+
+func handle_timer(delta: float):
+	timer += delta
+	timer_label.text = "%.2f" % timer
 
 # PORTAL LOGIC
 
@@ -185,3 +198,14 @@ func _on_text_trigger(text_trigger: Area2D, body: Node2D):
 		player.display_text(text_trigger.text)
 	else:
 		player.hide_thoughts()
+
+
+# RADIO LOGIC
+
+func _on_radio_entered(radio, body):
+	if body != player:
+		return
+	var save_state = SaveState.new()
+	save_state.timer = timer
+	ResourceSaver.save(save_state, "res://timer.tres")
+	get_tree().change_scene_to_file("res://MainMenu.tscn")

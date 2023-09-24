@@ -68,3 +68,5 @@ frame_progress = 0.70918
 position = Vector2(0, 10)
 scale = Vector2(1, 0.6)
 shape = SubResource("RectangleShape2D_co5uj")
+
+[connection signal="body_entered" from="." to="." method="_on_radio_entered"]

@@ -1,19 +1,35 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx1ax31g3mbp5"]
+[gd_scene load_steps=11 format=3 uid="uid://cx1ax31g3mbp5"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_56ctb"]
+[ext_resource type="FontFile" uid="uid://do1q2pjaiiau0" path="res://assets/font/Retro Gaming.ttf" id="2_soxo7"]
 [ext_resource type="PackedScene" uid="uid://d2edjat5rypvf" path="res://TileMapTestScene.tscn" id="4_x5pq2"]
 [ext_resource type="PackedScene" uid="uid://ce8vc25cnr5hg" path="res://Player.tscn" id="4_yyw3a"]
 [ext_resource type="PackedScene" uid="uid://bc07ljbi0hdbt" path="res://GameScenes/Scene02.tscn" id="5_ce64m"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="5_euepo"]
-[ext_resource type="PackedScene" uid="uid://dxlqe3leywbbf" path="res://FirstScene.tscn" id="6_duk4u"]
-[ext_resource type="PackedScene" uid="uid://cy2ph4qv8yvq6" path="res://GameScenes/Scene03.tscn" id="6_u1uvv"]
-[ext_resource type="PackedScene" uid="uid://d8yanx6ciibk" path="res://GameScenes/Scene04.tscn" id="8_uhqn2"]
+[ext_resource type="PackedScene" uid="uid://cr6dsviiww2p2" path="res://FirstScene.tscn" id="6_duk4u"]
+[ext_resource type="PackedScene" path="res://GameScenes/Scene03.tscn" id="6_u1uvv"]
+[ext_resource type="PackedScene" path="res://GameScenes/Scene04.tscn" id="8_uhqn2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h0pja"]
+font = ExtResource("2_soxo7")
+font_size = 33
+outline_size = 11
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_56ctb")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+offset_left = 38.0
+offset_top = 24.0
+offset_right = 78.0
+offset_bottom = 66.0
+label_settings = SubResource("LabelSettings_h0pja")
+
 [node name="Player" parent="." instance=ExtResource("4_yyw3a")]
-position = Vector2(982, 3296)
+position = Vector2(-4544, -802)
 SPEED = 500
 
 [node name="TestScene" parent="." instance=ExtResource("4_x5pq2")]
@@ -32,7 +48,6 @@ metadata/_edit_lock_ = true
 [node name="Scene03" parent="." instance=ExtResource("6_u1uvv")]
 position = Vector2(50, 3126)
 scale = Vector2(2.5, 2.5)
-metadata/_edit_lock_ = true
 
 [node name="MainMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_euepo")

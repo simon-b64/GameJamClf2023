@@ -1,7 +1,7 @@
 [gd_scene load_steps=531 format=3 uid="uid://dpubh2myseqtj"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_j8aen"]
-[ext_resource type="FontFile" uid="uid://do1q2pjaiiau0" path="res://assets/font/Retro Gaming.ttf" id="2_jlclh"]
+[ext_resource type="FontFile" uid="uid://dvrfj33wjy7eo" path="res://assets/font/Retro Gaming.ttf" id="2_jlclh"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="2_o8t5k"]
 [ext_resource type="Texture2D" uid="uid://deq8khxov7meb" path="res://assets/background-sh.png" id="3_o0v4f"]
 

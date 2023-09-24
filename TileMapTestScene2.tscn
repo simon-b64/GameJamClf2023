@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mnbmx45i3gfh"]
 
 [ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_mhe83"]
-[ext_resource type="PackedScene" uid="uid://bi6cyleuokliv" path="res://Portal.tscn" id="2_u6bke"]
+[ext_resource type="PackedScene" uid="uid://yl2ljv6kn30w" path="res://Portal.tscn" id="2_u6bke"]
 
 [node name="TileMapTestScene2" type="TileMap"]
 tile_set = ExtResource("1_mhe83")

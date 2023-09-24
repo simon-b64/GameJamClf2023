@@ -55,3 +55,10 @@ func _physics_process(delta):
 		
 
 	move_and_slide()
+
+func hide_thoughts():
+	$Book.visible = false
+
+func display_text(text: String):
+	$Book.visible = true
+	$Book/Control/Label.text = text

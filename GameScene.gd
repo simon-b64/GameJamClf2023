@@ -27,6 +27,7 @@ func _ready():
 	register_portals()
 	register_keys()
 	register_locked_entries()
+	register_text_triggers()
 
 func get_all_children(node: Node, children:=[]):
 	children.push_back(node)
@@ -73,6 +74,14 @@ func register_locked_entries():
 func connect_to_locked_entry(locked_entry: StaticBody2D):
 	locked_entry.locked_entry_entered.connect(_on_locked_entry_entered)
 
+func register_text_triggers():
+	var text_triggers = children.filter(func(child): return child.scene_file_path == "res://TextTrigger.tscn")
+	for text_trigger in text_triggers:
+		connect_to_text_trigger(text_trigger)
+
+func connect_to_text_trigger(text_trigger):
+	text_trigger.text_trigger_entered.connect(_on_text_trigger)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	handle_volume()
@@ -104,7 +113,6 @@ func handle_volume():
 	var distance = player.get_global_transform().get_origin().distance_squared_to(radio.get_global_transform().get_origin())
 	var clamped_distance = min(1, max(0, log(distance)/50))
 	musicPlayer.volume_db = 2 * (1 - clamped_distance)
-	print(log(distance))
 
 # PORTAL LOGIC
 
@@ -166,3 +174,14 @@ func _on_locked_entry_entered(locked_entry: StaticBody2D, body: Node2D):
 		return
 	amount_of_keys -= 1
 	locked_entry.queue_free()
+
+
+# TEXT TRIGGER LOGIC
+
+func _on_text_trigger(text_trigger: Area2D, body: Node2D):
+	if body != player:
+		return
+	if text_trigger.show_text:
+		player.display_text(text_trigger.text)
+	else:
+		player.hide_thoughts()

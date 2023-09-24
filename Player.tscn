@@ -1,7 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://ce8vc25cnr5hg"]
+[gd_scene load_steps=33 format=3 uid="uid://ce8vc25cnr5hg"]
 
 [ext_resource type="Script" path="res://PlayerController.gd" id="1_w6mjw"]
-[ext_resource type="Texture2D" uid="uid://dphiva4cyy4vm" path="res://assets/tiles/Character-Sheet.png" id="2_svos6"]
+[ext_resource type="Texture2D" uid="uid://by84n3bhaaj6c" path="res://assets/tiles/Character-Sheet.png" id="2_svos6"]
+[ext_resource type="Texture2D" uid="uid://d1va7eki2xluq" path="res://assets/tiles/Book.png" id="3_m4nnu"]
+[ext_resource type="FontFile" uid="uid://do1q2pjaiiau0" path="res://assets/font/Retro Gaming.ttf" id="4_n2u7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s35ig"]
 size = Vector2(23, 30)
@@ -272,7 +274,13 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace1D_115op")
 states/Idle/position = Vector2(307, 57)
 states/Start/position = Vector2(181, 57)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7kc6f"), "Idle", "GroundMovement", SubResource("AnimationNodeStateMachineTransition_40lsw"), "GroundMovement", "Idle", SubResource("AnimationNodeStateMachineTransition_1m5qd"), "Idle", "AirMovement", SubResource("AnimationNodeStateMachineTransition_5t6a4"), "AirMovement", "Idle", SubResource("AnimationNodeStateMachineTransition_y8s3p"), "GroundMovement", "AirMovement", SubResource("AnimationNodeStateMachineTransition_r15it"), "AirMovement", "GroundMovement", SubResource("AnimationNodeStateMachineTransition_ywwp4")]
-graph_offset = Vector2(-224, -41)
+graph_offset = Vector2(-268, -104)
+
+[sub_resource type="LabelSettings" id="LabelSettings_26tl7"]
+line_spacing = 0.5
+font = ExtResource("4_n2u7d")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -313,3 +321,34 @@ scale = Vector2(59.05, 59.05)
 position = Vector2(0, 4.5)
 color = Color(0.12549, 0.12549, 0.12549, 1)
 polygon = PackedVector2Array(-372, 168.5, -1158.5, 919.5, 1414.5, 826.5, 1097, -773.5, -887.5, -574.5, -1126.5, 919.5, 2.5, 54.5, -10.5, -7.5, 1.53333, -13.7333, 13.8833, -8.51667, 11.2667, 3.48333, -26.9833, 2.53333)
+
+[node name="Book" type="Node2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(50, -56.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Book"]
+position = Vector2(24, -19)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_m4nnu")
+
+[node name="Control" type="Control" parent="Book"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = -79.0
+offset_right = 48.0
+offset_bottom = -39.0
+scale = Vector2(1.34905, 1.16)
+
+[node name="Label" type="Label" parent="Book/Control"]
+layout_mode = 0
+offset_left = -0.37063
+offset_top = -1.52588e-05
+offset_right = 199.629
+offset_bottom = 200.0
+scale = Vector2(0.3, 0.3)
+text = "Lorem Ipsum Set Dolor est amigus magnificus caesarem salvate dominus"
+label_settings = SubResource("LabelSettings_26tl7")
+autowrap_mode = 1
+clip_text = true

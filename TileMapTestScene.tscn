@@ -58,12 +58,15 @@ z_index = 1
 position = Vector2(437.5, 720)
 color = 2
 type = 2
-timer_duration = 3.0
+timer_duration = 5.0
 
-[node name="ButtonLockedEntry" parent="." node_paths=PackedStringArray("button") instance=ExtResource("6_tb8hy")]
+[node name="ButtonLockedEntry" parent="." node_paths=PackedStringArray("buttons") instance=ExtResource("6_tb8hy")]
 position = Vector2(516.25, 720)
-button = NodePath("../Button")
+buttons = [NodePath("../Button"), NodePath("../Button2")]
 
 [node name="Radio" parent="." instance=ExtResource("7_nwe5h")]
 position = Vector2(1228.5, 704)
 scale = Vector2(2, 2)
+
+[node name="Button2" parent="." instance=ExtResource("5_c8ssi")]
+position = Vector2(387, 720)

@@ -13,7 +13,7 @@
 script = ExtResource("1_56ctb")
 
 [node name="Player" parent="." instance=ExtResource("4_yyw3a")]
-position = Vector2(890, 3396)
+position = Vector2(982, 3296)
 SPEED = 500
 
 [node name="TestScene" parent="." instance=ExtResource("4_x5pq2")]

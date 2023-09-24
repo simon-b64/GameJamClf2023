@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://04ax73ojjr4q"]
 
-[ext_resource type="Texture2D" uid="uid://bhrjwi8qx5jml" path="res://assets/tiles/DoorLockLeft.png" id="1_3pj1a"]
+[ext_resource type="Texture2D" uid="uid://c2tlydebw74ou" path="res://assets/tiles/DoorLockLeft.png" id="1_3pj1a"]
 [ext_resource type="Script" path="res://LockedEntry.gd" id="1_b7bdm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oa0s6"]

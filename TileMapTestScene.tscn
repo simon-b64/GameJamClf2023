@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://LockedEntry.tscn" id="4_quuoh"]
 [ext_resource type="PackedScene" uid="uid://b5gm22f16oevo" path="res://Button.tscn" id="5_c8ssi"]
 [ext_resource type="PackedScene" uid="uid://dr4umlhx0f2ku" path="res://ButtonLockedEntry.tscn" id="6_tb8hy"]
-[ext_resource type="PackedScene" uid="uid://blk4wgj3bpwic" path="res://Radio.tscn" id="7_nwe5h"]
+[ext_resource type="PackedScene" path="res://Radio.tscn" id="7_nwe5h"]
 
 [node name="TileMap" type="TileMap"]
 position = Vector2(126, -54)
@@ -43,7 +43,7 @@ layer_3/tile_data = PackedInt32Array(1441821, 196609, 3, 19, 786433, 0, 65555, 7
 z_index = 1
 position = Vector2(-32.75, 721)
 scale = Vector2(-2, 1.5)
-portal_channel = 1
+portal_channel = 386
 
 [node name="Key" parent="." instance=ExtResource("3_n36op")]
 position = Vector2(623, 719)

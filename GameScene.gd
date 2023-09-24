@@ -22,7 +22,7 @@ var timer := 0.0
 @onready var timer_label := $CanvasLayer/TimerLabel
 
 # YEEEAAAAHHH BOOOOIIIIII
-@onready var radio := $TestScene/Radio
+@onready var radio := $Scene03/Radio
 @onready var musicPlayer := $MainMusicPlayer
 
 # Called when the node enters the scene tree for the first time.

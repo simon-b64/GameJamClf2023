@@ -1,14 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx1ax31g3mbp5"]
+[gd_scene load_steps=17 format=3 uid="uid://cx1ax31g3mbp5"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_56ctb"]
-[ext_resource type="FontFile" uid="uid://do1q2pjaiiau0" path="res://assets/font/Retro Gaming.ttf" id="2_soxo7"]
+[ext_resource type="FontFile" uid="uid://b6l5gulg5cfe" path="res://assets/font/Retro Gaming.ttf" id="2_soxo7"]
 [ext_resource type="PackedScene" uid="uid://d2edjat5rypvf" path="res://TileMapTestScene.tscn" id="4_x5pq2"]
 [ext_resource type="PackedScene" uid="uid://ce8vc25cnr5hg" path="res://Player.tscn" id="4_yyw3a"]
 [ext_resource type="PackedScene" uid="uid://bc07ljbi0hdbt" path="res://GameScenes/Scene02.tscn" id="5_ce64m"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="5_euepo"]
-[ext_resource type="PackedScene" uid="uid://cr6dsviiww2p2" path="res://FirstScene.tscn" id="6_duk4u"]
-[ext_resource type="PackedScene" path="res://GameScenes/Scene03.tscn" id="6_u1uvv"]
-[ext_resource type="PackedScene" path="res://GameScenes/Scene04.tscn" id="8_uhqn2"]
+[ext_resource type="PackedScene" uid="uid://dxlqe3leywbbf" path="res://FirstScene.tscn" id="6_duk4u"]
+[ext_resource type="PackedScene" uid="uid://cy2ph4qv8yvq6" path="res://GameScenes/Scene03.tscn" id="6_u1uvv"]
+[ext_resource type="PackedScene" uid="uid://d8yanx6ciibk" path="res://GameScenes/Scene04.tscn" id="8_uhqn2"]
+[ext_resource type="PackedScene" uid="uid://70pf7hd3ot56" path="res://GameScenes/Maze/MazePart01.tscn" id="9_gwe0e"]
+[ext_resource type="PackedScene" uid="uid://fomjirany15e" path="res://GameScenes/Maze/MazePart02.tscn" id="10_7fle5"]
+[ext_resource type="PackedScene" uid="uid://qaiejnshushe" path="res://GameScenes/Maze/MazePart03.tscn" id="11_er7ea"]
+[ext_resource type="PackedScene" uid="uid://lfpqoccdd6ko" path="res://GameScenes/Maze/MazePart04.tscn" id="12_bvoiv"]
+[ext_resource type="PackedScene" uid="uid://d33xfjh6pvtwh" path="res://GameScenes/Maze/MazePart05.tscn" id="13_muctg"]
+[ext_resource type="PackedScene" uid="uid://iovg8qv4inl" path="res://GameScenes/JumpAndRunScene.tscn" id="14_v723p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h0pja"]
 font = ExtResource("2_soxo7")
@@ -29,7 +35,7 @@ offset_bottom = 66.0
 label_settings = SubResource("LabelSettings_h0pja")
 
 [node name="Player" parent="." instance=ExtResource("4_yyw3a")]
-position = Vector2(-4544, -802)
+position = Vector2(4108, -1094)
 SPEED = 500
 
 [node name="TestScene" parent="." instance=ExtResource("4_x5pq2")]
@@ -54,5 +60,31 @@ stream = ExtResource("5_euepo")
 autoplay = true
 
 [node name="Scene04" parent="." instance=ExtResource("8_uhqn2")]
-position = Vector2(-8565, 4235)
+position = Vector2(-13708, 4705)
+scale = Vector2(2.5, 2.5)
+
+[node name="Maze" type="Node2D" parent="."]
+
+[node name="MazePart01" parent="Maze" instance=ExtResource("9_gwe0e")]
+position = Vector2(4023, -13003)
+scale = Vector2(2.5, 2.5)
+
+[node name="MazePart02" parent="Maze" instance=ExtResource("10_7fle5")]
+position = Vector2(11602, -12967)
+scale = Vector2(2.5, 2.5)
+
+[node name="MazePart03" parent="Maze" instance=ExtResource("11_er7ea")]
+position = Vector2(19324, -12787)
+scale = Vector2(2.5, 2.5)
+
+[node name="MazePart04" parent="Maze" instance=ExtResource("12_bvoiv")]
+position = Vector2(27371, -12680)
+scale = Vector2(2.5, 2.5)
+
+[node name="MazePart05" parent="Maze" instance=ExtResource("13_muctg")]
+position = Vector2(35020, -12607)
+scale = Vector2(2.5, 2.5)
+
+[node name="JumpAndRunScene" parent="." instance=ExtResource("14_v723p")]
+position = Vector2(9216, 19008)
 scale = Vector2(2.5, 2.5)

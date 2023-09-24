@@ -5,6 +5,8 @@ signal portal_exited(portal: Node2D, body: Node2D)
 signal tunnel_entered(portal: Node2D, body: Node2D)
 signal tunnel_exited(portal: Node2D, body: Node2D)
 
+@export var portal_channel: int
+
 func _on_portal_entered(body: Node2D):
 	portal_entered.emit(self, body)
 	

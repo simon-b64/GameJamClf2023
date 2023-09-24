@@ -17,6 +17,10 @@ var amount_of_keys := 0
 # DEBUG
 @onready var slider := $Fade/HSlider
 
+# YEEEAAAAHHH BOOOOIIIIII
+@onready var radio := $TestScene/Radio
+@onready var musicPlayer := $MainMusicPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	children = get_all_children(self)
@@ -37,10 +41,10 @@ func register_portals():
 	var portal_assignment = {}
 	for portal in portal_array:
 		connect_to_portal(portal)
-		if portal.get_name() in portal_assignment:
-			portal_assignment[portal.get_name()].push_back(portal)
+		if portal.portal_channel in portal_assignment:
+			portal_assignment[portal.portal_channel].push_back(portal)
 		else:
-			portal_assignment[portal.get_name()] = [portal]
+			portal_assignment[portal.portal_channel] = [portal]
 	for assignment in portal_assignment.values():
 		if len(assignment) != 2:
 			continue
@@ -70,7 +74,8 @@ func connect_to_locked_entry(locked_entry: StaticBody2D):
 	locked_entry.locked_entry_entered.connect(_on_locked_entry_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
+	handle_volume()
 	if current_tunnel == null:
 		return
 	handle_fog()
@@ -95,6 +100,11 @@ func handle_fog():
 	$Player/Camera2D.drag_left_margin = 0.2 * camfactor
 	$Player/Camera2D.drag_right_margin = 0.2 * camfactor
 
+func handle_volume():
+	var distance = player.get_global_transform().get_origin().distance_squared_to(radio.get_global_transform().get_origin())
+	var clamped_distance = min(1, max(0, log(distance)/50))
+	musicPlayer.volume_db = 2 * (1 - clamped_distance)
+	print(log(distance))
 
 # PORTAL LOGIC
 

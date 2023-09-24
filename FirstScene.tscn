@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxlqe3leywbbf"]
+[gd_scene load_steps=3 format=3 uid="uid://cr6dsviiww2p2"]
 
 [ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_fsvym"]
 [ext_resource type="PackedScene" uid="uid://yl2ljv6kn30w" path="res://Portal.tscn" id="2_53idc"]
@@ -36,3 +36,4 @@ metadata/_edit_lock_ = true
 [node name="Portal01" parent="." instance=ExtResource("2_53idc")]
 z_index = 3
 position = Vector2(1507, 49)
+portal_channel = 1

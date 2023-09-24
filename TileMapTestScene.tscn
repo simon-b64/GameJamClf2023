@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2edjat5rypvf"]
+[gd_scene load_steps=7 format=3 uid="uid://d2edjat5rypvf"]
 
 [ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_ntl7x"]
 [ext_resource type="PackedScene" uid="uid://bi6cyleuokliv" path="res://Portal.tscn" id="3_cylkg"]
 [ext_resource type="PackedScene" uid="uid://cy71vawm5vgct" path="res://Key.tscn" id="3_n36op"]
 [ext_resource type="PackedScene" uid="uid://04ax73ojjr4q" path="res://LockedEntry.tscn" id="4_quuoh"]
 [ext_resource type="PackedScene" uid="uid://b5gm22f16oevo" path="res://Button.tscn" id="5_c8ssi"]
+[ext_resource type="PackedScene" uid="uid://dr4umlhx0f2ku" path="res://ButtonLockedEntry.tscn" id="6_tb8hy"]
 
 [node name="TileMap" type="TileMap"]
 position = Vector2(126, -54)
@@ -54,4 +55,9 @@ scale = Vector2(-1, 1)
 z_index = 1
 position = Vector2(437.5, 720)
 color = 2
-timer_duration = null
+type = 2
+timer_duration = 3.0
+
+[node name="ButtonLockedEntry" parent="." node_paths=PackedStringArray("button") instance=ExtResource("6_tb8hy")]
+position = Vector2(516.25, 720)
+button = NodePath("../Button")

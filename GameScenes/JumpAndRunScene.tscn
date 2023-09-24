@@ -1,13 +1,13 @@
-﻿[gd_scene load_steps=6 format=3 uid="uid://iovg8qv4inl"]
+[gd_scene load_steps=6 format=3 uid="uid://iovg8qv4inl"]
 
-[ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_6rec7"]
+[ext_resource type="TileSet" uid="uid://cprbvuid4cjia" path="res://assets/tiles/libraryTiles.tres" id="1_yceeu"]
 [ext_resource type="PackedScene" uid="uid://dr4umlhx0f2ku" path="res://ButtonLockedEntry.tscn" id="2_g824j"]
-[ext_resource type="PackedScene" path="res://Key.tscn" id="3_r4mqs"]
+[ext_resource type="PackedScene" path="res://Key.tscn" id="3_ysmwr"]
 [ext_resource type="PackedScene" uid="uid://b5gm22f16oevo" path="res://Button.tscn" id="4_cvl0b"]
-[ext_resource type="PackedScene" uid="uid://yl2ljv6kn30w" path="res://Portal.tscn" id="5_6hdcf"]
+[ext_resource type="PackedScene" uid="uid://yl2ljv6kn30w" path="res://Portal.tscn" id="2_lwouc"]
 
 [node name="JumpAndRunScene" type="TileMap"]
-tile_set = ExtResource("1_6rec7")
+tile_set = ExtResource("1_yceeu")
 format = 2
 layer_0/name = "Background"
 layer_0/z_index = -2
@@ -46,7 +46,7 @@ buttons = [NodePath("../Button2"), NodePath("../Button5")]
 position = Vector2(3820, 1072)
 buttons = [NodePath("../Button"), NodePath("../Button4")]
 
-[node name="Key" parent="." instance=ExtResource("3_r4mqs")]
+[node name="Key" parent="." instance=ExtResource("3_ysmwr")]
 position = Vector2(4749, 52)
 
 [node name="Button" parent="." instance=ExtResource("4_cvl0b")]
@@ -85,7 +85,7 @@ color = 2
 type = 2
 timer_duration = 15.0
 
-[node name="Node2D2" parent="." instance=ExtResource("5_6hdcf")]
+[node name="Portal" parent="." instance=ExtResource("2_lwouc")]
 position = Vector2(-35, 1073)
 scale = Vector2(-2, 1.5)
 portal_channel = 13

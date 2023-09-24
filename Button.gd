@@ -36,6 +36,7 @@ func _get_property_list():
 
 func _init():
 	add_child(timer)
+	timer.one_shot = true
 	timer.timeout.connect(func(): should_release = true)
 
 func _physics_process(delta: float):

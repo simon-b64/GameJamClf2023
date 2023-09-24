@@ -14,12 +14,14 @@ func connect_button(button):
 func on_button_pressed(button, body):
 	should_be_closed = false
 	$AnimationTree.get("parameters/playback").travel("open")
+	print("Button Pressed")
 
 func on_button_released(button):
 	should_be_closed = true
 	$CollisionShape2D.disabled = false
 	$AnimationTree.get("parameters/playback").travel("close")
+	print("Button Released")
 
 func on_anim_finished(anim):
-	if anim == "idle_open" && !should_be_closed:
+	if anim == "open" && !should_be_closed:
 		$CollisionShape2D.disabled = true

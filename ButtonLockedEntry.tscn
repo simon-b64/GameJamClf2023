@@ -1,27 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr4umlhx0f2ku"]
+[gd_scene load_steps=13 format=3 uid="uid://dr4umlhx0f2ku"]
 
 [ext_resource type="Script" path="res://ButtonLockedEntry.gd" id="1_fejuy"]
-[ext_resource type="Texture2D" uid="uid://b1aivqnkoerwp" path="res://assets/tiles/MoveUpDoor.png" id="1_lu7d5"]
-
-[sub_resource type="Animation" id="Animation_uhgfi"]
-resource_name = "open"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
+[ext_resource type="Texture2D" uid="uid://bie6ld3o1jhfi" path="res://assets/tiles/MoveUpDoor.png" id="1_lu7d5"]
 
 [sub_resource type="Animation" id="Animation_jlakr"]
 resource_name = "close"
-length = 2.0
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,15 +13,15 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4, 3, 2, 1, 0]
+"values": [3, 2, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_ugxju"]
-resource_name = "idle_closed"
-length = 0.4
+[sub_resource type="Animation" id="Animation_uhgfi"]
+resource_name = "open"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,74 +29,39 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_e2hgc"]
-resource_name = "idle_open"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
+"values": [1, 2, 3, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7gqc"]
 _data = {
 "close": SubResource("Animation_jlakr"),
-"idle_closed": SubResource("Animation_ugxju"),
-"idle_open": SubResource("Animation_e2hgc"),
 "open": SubResource("Animation_uhgfi")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsupn"]
 animation = &"close"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tu2h3"]
-animation = &"idle_closed"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4kxrv"]
-animation = &"idle_open"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ygrs7"]
 animation = &"open"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mrcmo"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lf6si"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bsbpj"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_358f3"]
 switch_mode = 2
-advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rdo0s"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4lqmn"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oljkq"]
 switch_mode = 2
-advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oic8n"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_krl6y"]
 states/Start/position = Vector2(68, 89)
 states/close/node = SubResource("AnimationNodeAnimation_rsupn")
 states/close/position = Vector2(354, 169)
-states/idle_closed/node = SubResource("AnimationNodeAnimation_tu2h3")
-states/idle_closed/position = Vector2(227, 89)
-states/idle_open/node = SubResource("AnimationNodeAnimation_4kxrv")
-states/idle_open/position = Vector2(486, 74)
 states/open/node = SubResource("AnimationNodeAnimation_ygrs7")
 states/open/position = Vector2(361, -1)
-transitions = ["Start", "idle_closed", SubResource("AnimationNodeStateMachineTransition_mrcmo"), "idle_closed", "open", SubResource("AnimationNodeStateMachineTransition_lf6si"), "open", "idle_open", SubResource("AnimationNodeStateMachineTransition_bsbpj"), "idle_open", "close", SubResource("AnimationNodeStateMachineTransition_rdo0s"), "close", "idle_closed", SubResource("AnimationNodeStateMachineTransition_4lqmn")]
+transitions = ["open", "close", SubResource("AnimationNodeStateMachineTransition_358f3"), "close", "open", SubResource("AnimationNodeStateMachineTransition_oljkq"), "Start", "open", SubResource("AnimationNodeStateMachineTransition_oic8n")]
 graph_offset = Vector2(-422, -124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lbje"]

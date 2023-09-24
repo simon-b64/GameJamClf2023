@@ -35,6 +35,8 @@ layer_3/tile_data = PackedInt32Array(262144, 65537, 65537, 262145, 65537, 2, 262
 [node name="Portal01" parent="." instance=ExtResource("2_l0y1f")]
 position = Vector2(-35, 145)
 scale = Vector2(-2, 1.5)
+portal_channel = 1
 
 [node name="Portal02" parent="." instance=ExtResource("2_l0y1f")]
 position = Vector2(7843, 145)
+portal_channel = 2

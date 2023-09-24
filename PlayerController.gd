@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 @export var SPEED: int = 300.0
-@export var JUMP_VELOCITY: int = -800
+@export var JUMP_VELOCITY: int = -900
 
+var MAX_Y_DOWN_VELOCITY = 1500
 var JUMP_BUCKET_CONST: float = 0.3
 var jump_bucket: int = JUMP_VELOCITY
 var delta_since_latst_vel_add: int = 0
@@ -28,6 +29,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		velocity.y = jump_bucket * JUMP_BUCKET_CONST
 		jump_bucket *= 1 - JUMP_BUCKET_CONST
+		
+	# Limit Y velocity to not get infinit gravity acceleration
+	# TODO: Discuss if this is good, because we could get a "glide"
+	velocity.y = min(MAX_Y_DOWN_VELOCITY, velocity.y)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

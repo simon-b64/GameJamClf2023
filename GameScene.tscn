@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx1ax31g3mbp5"]
+[gd_scene load_steps=9 format=3 uid="uid://cx1ax31g3mbp5"]
 
 [ext_resource type="Script" path="res://GameScene.gd" id="1_56ctb"]
 [ext_resource type="PackedScene" uid="uid://d2edjat5rypvf" path="res://TileMapTestScene.tscn" id="4_x5pq2"]
@@ -6,17 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://bc07ljbi0hdbt" path="res://GameScenes/Scene02.tscn" id="5_ce64m"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="5_euepo"]
 [ext_resource type="PackedScene" uid="uid://dxlqe3leywbbf" path="res://FirstScene.tscn" id="6_duk4u"]
+[ext_resource type="PackedScene" uid="uid://cy2ph4qv8yvq6" path="res://GameScenes/Scene03.tscn" id="6_u1uvv"]
+[ext_resource type="PackedScene" uid="uid://d8yanx6ciibk" path="res://GameScenes/Scene04.tscn" id="8_uhqn2"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_56ctb")
 
 [node name="Player" parent="." instance=ExtResource("4_yyw3a")]
-position = Vector2(982, -752)
+position = Vector2(890, 3396)
 SPEED = 500
-metadata/_edit_lock_ = true
 
 [node name="TestScene" parent="." instance=ExtResource("4_x5pq2")]
-position = Vector2(147, 1641)
+position = Vector2(-4967, -2376)
 scale = Vector2(2.5, 2.5)
 
 [node name="FirstScene" parent="." instance=ExtResource("6_duk4u")]
@@ -28,6 +29,15 @@ position = Vector2(1935, 150)
 scale = Vector2(2.5, 2.5)
 metadata/_edit_lock_ = true
 
+[node name="Scene03" parent="." instance=ExtResource("6_u1uvv")]
+position = Vector2(50, 3126)
+scale = Vector2(2.5, 2.5)
+metadata/_edit_lock_ = true
+
 [node name="MainMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_euepo")
 autoplay = true
+
+[node name="Scene04" parent="." instance=ExtResource("8_uhqn2")]
+position = Vector2(-8565, 4235)
+scale = Vector2(2.5, 2.5)

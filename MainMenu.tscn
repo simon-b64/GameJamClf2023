@@ -1,12 +1,22 @@
-[gd_scene load_steps=529 format=3 uid="uid://dpubh2myseqtj"]
+[gd_scene load_steps=531 format=3 uid="uid://dpubh2myseqtj"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_j8aen"]
+[ext_resource type="FontFile" uid="uid://do1q2pjaiiau0" path="res://assets/font/Retro Gaming.ttf" id="2_jlclh"]
 [ext_resource type="AudioStream" uid="uid://2tv6ssegyvdm" path="res://assets/8bitStuff.mp3" id="2_o8t5k"]
 [ext_resource type="Texture2D" uid="uid://deq8khxov7meb" path="res://assets/background-sh.png" id="3_o0v4f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6pbd1"]
 line_spacing = 2.81
-font_size = 36
+font = ExtResource("2_jlclh")
+font_size = 33
+outline_size = 11
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cng4m"]
+font = ExtResource("2_jlclh")
+font_size = 22
+outline_size = 11
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6pna"]
 atlas = ExtResource("3_o0v4f")
@@ -3705,12 +3715,31 @@ button_pressed = true
 text = "Music"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 384.0
-offset_top = 128.0
-offset_right = 896.0
-offset_bottom = 256.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 360.0
+offset_top = 163.0
+offset_right = 920.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Turn off the fucking music"
 label_settings = SubResource("LabelSettings_6pbd1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(512, 0)
+offset_left = 384.0
+offset_top = 247.0
+offset_right = 896.0
+offset_bottom = 270.0
+text = "in less than"
+label_settings = SubResource("LabelSettings_cng4m")
 horizontal_alignment = 1
 vertical_alignment = 1
 

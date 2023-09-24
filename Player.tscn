@@ -294,9 +294,7 @@ hframes = 5
 shape = SubResource("RectangleShape2D_s35ig")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
+editor_draw_drag_margin = true
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
